@@ -1,6 +1,9 @@
 import './style.css'
 import {useDispatch} from 'react-redux'
 import { addItem, removeItem, getAmountInCart } from '../../redux/slices/Cart';
+import { useState } from 'react';
+
+
 
 
 
@@ -8,24 +11,19 @@ function Tshirt(props) {
     
     const dispatch = useDispatch();
     const thisItem = props.product;
-    let renderAmountInCart = '0';
-
+    let [amountInCart, setAmountInCart] = useState(0)
 
     const handleClickAdd = () => {
         console.log('Clicked -> ', thisItem.productId, thisItem.title)
         dispatch(addItem(thisItem));
-        renderAmountInCart = dispatch(getAmountInCart(thisItem))
-        console.log(renderAmountInCart.payload.amountInCart)
-        // console.log('rendering amount only: ', getAmountInCart)
-        // console.log('---')
-        // renderAmountInCart = getAmountInCart.payload.amountInCart
-        // console.log('rendering amount in cart: ', renderAmountInCart)
+        setAmountInCart(amountInCart+1);
     }
+
 
     const handleClickRemove = () => {
         console.log('Clicked -> ', thisItem.productId, thisItem.title)
         dispatch(removeItem(thisItem));
-        renderAmountInCart = dispatch(getAmountInCart(thisItem))
+        setAmountInCart((amountInCart !== 0) ? amountInCart-1 : 0);
     }
 
     return (
@@ -36,7 +34,7 @@ function Tshirt(props) {
             <div key={`${props.product.productId}-3`} className={`price`}>{`Price: ${props.product.cost}.00 CHF`}</div>
             <div className="productShopButtons-container">
                 <i className="fa-solid fa-square-plus" onClick={() => handleClickAdd()}></i>
-                <div className="amountInCarDisplay">{renderAmountInCart}</div>
+                <div className="amountInCarDisplay">{amountInCart}</div>
                 <i className="fa-solid fa-square-minus" onClick={() => handleClickRemove()}></i>
                 {/* <i id={props.product.productId} className="fa-solid fa-cart-shopping" onClick={(event) => handleClick(event)}></i> */}
             </div>

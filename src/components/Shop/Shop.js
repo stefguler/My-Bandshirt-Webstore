@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import './style.css';
 import Tshirt from "../Tshirt/Tshirt";
 
-function Store() {
+function Shop() {
 
     // const getCosts = () => {
     //     return Math.floor(Math.random()*100);
@@ -25,4 +25,4 @@ function Store() {
     )
 }
 
-export default Store;
+export default Shop;

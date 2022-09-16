@@ -26,7 +26,7 @@ export const shopSlice = createSlice({
                 description: 'B/W Band Shirt \n...',
                 avatar: 't_shirt_3.png',
                 cost: 70,
-                amountInCartt: 1
+                amountInCart: 1
             },
             {
                 productId: 4,

@@ -1,0 +1,7 @@
+.payment-methods-container i {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
