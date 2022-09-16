@@ -1,17 +1,1 @@
-
-
-
-function Tshirt() {
-
-
-
-
-    return(
-        <>
-        
-        
-        </>
-    )
-
-    
-}
+export {default} from './Tshirt';

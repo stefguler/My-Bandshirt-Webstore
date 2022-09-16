@@ -1,9 +1,17 @@
 header {
     display:  flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
     background-color: white;
     align-items: center;
     margin-bottom: 5rem;
     width: 100%;
+    height: 5rem;
+    border-bottom: 1rem black solid;
+    color: black;
 }
 
 .banner-title {
@@ -21,11 +29,16 @@ header {
     display: flex;
     align-items: center;
 }
+
 .banner-car-status {
     border: black 2px solid;
     border-radius: 0.3rem;
     width: 2rem;
     color:  black;
+}
+
+.total-amount-container {
+    margin-left: 1rem;
 }
 
 i {
@@ -41,5 +54,7 @@ i:hover{
 
 header img {
     margin-left: 5rem;
+    width: 5rem;
 }
+
 

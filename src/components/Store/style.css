@@ -1,32 +1,6 @@
-.productCartLogo i {
-    color: black;
-    margin-top: 1rem;
-    font-size: 30px;
-}
-
-.productCartLogo i:hover {
-    color: gold;
-    margin-top: 1rem;
-}
-
-.product {
-    padding: 1rem;
-    background: white;
-    margin: 1rem;
-    border-radius: 1rem;
-    color: black;
-}
-
-.product .title {
-    font-weight: bold;
-}
-
-.product div {
-  margin: 1rem 0;
-  font-size: 22px;
-}
 
 .store-container {
+    margin: 10rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 70%;
@@ -34,6 +8,3 @@
     border-radius: 0.5rem;
     background: black;
 }
-
-
-
