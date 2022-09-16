@@ -40,9 +40,13 @@ function Cart() {
               <div className='item-amount'>{product.amountInCart}x</div>
               <div className='item-title'>"{product.title}"</div>
               <div className='item-price'>price {product.cost * product.amountInCart}.00 CHF</div>
-              <div className='remove'>
+              <div className='remove-item'>
                 <i class="fa-solid fa-trash"></i>
                 <span>Remove</span>
+              </div>
+              <div className='add-item'>
+              <i class="fa-solid fa-cart-plus"></i>
+                <span>Add</span>
               </div>
             </div>
           })
