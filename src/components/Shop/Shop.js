@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import './style.css';
 import Tshirt from "../Tshirt/Tshirt";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function Shop() {
 
@@ -16,11 +18,13 @@ function Shop() {
 
     return (
         <>
+        <Header></Header>
         <div className="store-container">
             {products.map((product, idx) => {
             return <Tshirt key={idx} product={product}/>
         })}
-        </div>         
+        </div>
+        <Footer></Footer>         
         </>
     )
 }

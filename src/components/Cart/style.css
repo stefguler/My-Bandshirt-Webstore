@@ -1,32 +1,47 @@
 .cart-container {
-
-  margin-top: 10rem;
+  background: white;
   display: grid;
+  width: 80%;
   grid-template-columns: repeat(2, 1fr);
-  width: 100vw;
-  height: 100vh;
   border: 1px solid white;
+  border-radius: 0.5rem;
   align-items: center;
+  margin: 0 auto
 }
 
 .items-in-cart-container {
-  width: 80%;
+  align-self: flex-start;
+  justify-self: center;
+  width: 95%;
+  background: black;
   border: 1px solid white;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   margin: 1rem;
+  padding: 1rem;
 }
 
 .total-amount-in-cart{
   padding: 1rem 1rem
 }
 
+.items-in-cart-header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.items-in-cart-header-container button {
+  width: 7rem !important;
+  height: 3rem !important;
+}
+
 .items-in-cart-container button {
   width: 5rem;
   height: 2rem;
-  align-self: center;
-  margin: 0 1rem 3rem 0;
   border-radius: 0.5rem;
 }
 
@@ -43,6 +58,11 @@ th {
   font-weight: bold;
 }
 
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
 .item-remove {
   /* padding-top: 3rem; */
   font-size: 14px;
@@ -51,6 +71,8 @@ th {
 .item-add {
   /* padding-top: 3rem; */
   font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 button {
@@ -59,12 +81,17 @@ button {
 }
 
 .payment-methods-container {
+  align-self: flex-start;
+  justify-self: center;
+  text-align: center;
   border: 1px solid white;
   border-radius: 0.5rem;
   margin: 1rem;
-  width: 100%;
+  width: 95%;
+  background: black;
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .payment-methods-container span {
@@ -75,6 +102,8 @@ button {
 .i-container {
   display: flex;
   justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .payment-methods-container i {
@@ -82,32 +111,49 @@ button {
   align-items: center;
   justify-content: center;
   cursor: default !important;
-  font-size: 50px;
-  padding-bottom: 1rem;
+  font-size: 25px;
 }
 
 .estimated-delivery-container {
+  align-self: flex-start;
+  justify-self: center;
+  text-align: center;
   border: 1px solid white;
   border-radius: 0.5rem;
-  width: 100%;
+  width: 95%;
+  background: black;
   display: flex;
   flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
 
 }
 
 .estimated-delivery-container span {
-  padding-bottom: 1rem;
+  padding: 1rem;
+  font-size: 18px;
 
 }
 
 .cart-total-container {
   display: flex;
+  width: 95%;
+  background: black;
+  align-self: flex-start;
+  justify-self: center;
   align-items: center;
   border: 1px solid white;
   border-radius: 0.5rem;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.cart-total-container h3, h4 {
+
+  margin: 0.5rem;
+  
 }
 
 .cart-total-container  .line {
@@ -118,10 +164,17 @@ button {
 
 
 .cart-total-container button {
- width: 10%;
+ width: 50%;
  border-radius: 0.3rem;
  font-size: 16px;
  height: 4rem;
  margin: 1rem 0;
  background: rgb(238, 96, 231);
 }
+
+@media only screen and (max-width: 1450px) {
+  .cart-container {
+      grid-template-columns: repeat(1, 1fr);
+  }
+}
+
