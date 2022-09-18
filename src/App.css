@@ -82,6 +82,12 @@ span {
   color: gray;
 }
 
+.log-in-container p {
+  padding: 1rem;
+  font-size: 14px;
+  color: gray;
+}
+
 .signup  {
   padding-left: 0 !important;
   font-style: italic !important;
