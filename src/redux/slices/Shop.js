@@ -41,7 +41,7 @@ export const shopSlice = createSlice({
                 title: 'BandShirt "PWD" #5',
                 description: 'Color Band Shirt \n...',
                 avatar: 't_shirt_5.png',
-                cost: 55,
+                cost: 55.00,
                 amountInCart: 1
             },
             {

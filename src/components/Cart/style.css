@@ -1,7 +1,127 @@
-.payment-methods-container i {
+.cart-container {
+
+  margin-top: 10rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid white;
+  align-items: center;
+}
+
+.items-in-cart-container {
+  width: 80%;
+  border: 1px solid white;
+  border-radius: 0.5rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.total-amount-in-cart{
+  padding: 1rem 1rem
+}
+
+.items-in-cart-container button {
+  width: 5rem;
+  height: 2rem;
+  align-self: center;
+  margin: 0 1rem 3rem 0;
+  border-radius: 0.5rem;
+}
+
+.item-container div {
+  padding: 0 1rem;
+}
+
+.item-container i {
+  color: white !important;
+}
+
+th {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.item-remove {
+  /* padding-top: 3rem; */
+  font-size: 14px;
+}
+
+.item-add {
+  /* padding-top: 3rem; */
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+  background: rgb(238, 96, 231);
+}
+
+.payment-methods-container {
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-methods-container span {
+  padding: 1rem 0;
+}
+
+
+.i-container {
+  display: flex;
+  justify-content: center;
+}
+
+.payment-methods-container i {
   color: white;
   align-items: center;
   justify-content: center;
+  cursor: default !important;
+  font-size: 50px;
+  padding-bottom: 1rem;
+}
+
+.estimated-delivery-container {
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.estimated-delivery-container span {
+  padding-bottom: 1rem;
+
+}
+
+.cart-total-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-total-container  .line {
+  width: 30rem;
+  height: 1rem;
+  border-bottom: rgba(255, 255, 255, 0.301) solid 3px;
+}
+
+
+.cart-total-container button {
+ width: 10%;
+ border-radius: 0.3rem;
+ font-size: 16px;
+ height: 4rem;
+ margin: 1rem 0;
+ background: rgb(238, 96, 231);
 }

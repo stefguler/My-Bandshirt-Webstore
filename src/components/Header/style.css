@@ -14,11 +14,16 @@ header {
     color: black;
 }
 
+.banner-logo img {
+    cursor: pointer;
+}
+
 .banner-title {
     margin-left: 5rem;
     color: black;
     font-size: 22px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
