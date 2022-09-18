@@ -10,28 +10,24 @@ import { setToken } from './redux/slices/Auth'
 
 function App() {
 
-  const dispatch = useDispatch
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const authState = useSelector(state => state.auth)
-  console.log("-> authState", authState);
+  const authState = useSelector(state => state.token.token)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const handleSubmit = (event) => {
-    
-    event.preventDefault();
 
-    console.log('trying to log in...')
+    event.preventDefault();
 
     const url = 'https://motion.propulsion-home.ch/backend/api/auth/token/'
     const jsObject = {
       email: email,
       password: password
     }
-    console.log(jsObject.email)
-    console.log(jsObject.password)
+
     const config = {
       method: "POST",
       headers: new Headers({
@@ -39,46 +35,45 @@ function App() {
       }),
       body: JSON.stringify(jsObject)
     }
+
     fetch(url, config).then(response => {
       return response.json()
     }).then(data => {
-      // setToken(data.access)
-      const tokenFromServer = data.access
+      dispatch(setToken(data.access))
+    }).then(data => {
+      handleNavigate()
+    })
 
-      // Set token in redux
-      dispatch(setToken(tokenFromServer))
-    }
-    )
-
-    console.log(authState.token)
-
-    // if (authState.token === undefined) {
-    //     alert("Login first")
-    //   return
-    // }
-
-    // navigate('/Shop')
-
+    // .then(data => {
+    // handleNavigate()})
   }
 
+  //navigation doesn't work yet, didn't figure out how to make that it can navigate after getting the token.
+  //have to doubleclick the login button to make it work.
+  //temporary login credentials:
+  //email : xevibaj171@dnitem.com, pw: abcdefg
 
-
+  const handleNavigate = () => {
+      if (authState === undefined) {
+        alert("Failed to log in, please try")
+        return
+      }
+      navigate('/shop')
+    }
 
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-    console.log('email: ', email)
   }
 
   const handlePWChange = (event) => {
     setPassword(event.target.value);
-    console.log('pw: ', password)
   }
 
+  //to be implemented with users
   const handleSignUp = () => {
     console.log('trying to sign up')
   }
-
 
   return (
     <div className="home-container">
@@ -103,7 +98,6 @@ function App() {
             <span className='signup' onClick={handleSignUp}>Sign Up!</span>
           </div>
         </div>
-
         <Footer />
       </Fragment>
     </div>

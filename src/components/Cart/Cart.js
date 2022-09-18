@@ -1,14 +1,23 @@
 import './style.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem, removeItem, clearCart, addItemFromCart, removeItemFromCart } from '../../redux/slices/Cart';
-import { useState } from 'react';
+import { clearCart, addItemFromCart, removeItemFromCart } from '../../redux/slices/Cart';
+import { useEffect } from 'react';
 import Tshirt from '../Tshirt/Tshirt';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import {useNavigate} from 'react-router-dom'
 
 function Cart() {
 
   const dispatch = useDispatch();
+  const authState = useSelector(state => state.token.token)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      if (authState === undefined) {
+          navigate('/')
+      }
+  }, [authState]);
 
   const products = useSelector(state => state.cart.products)
   const totalPrice = useSelector(state => state.cart.totalPrice)
