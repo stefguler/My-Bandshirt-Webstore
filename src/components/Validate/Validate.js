@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react'
 import { setToken } from '../../redux/slices/Auth'
+import './style.css'
 
 
 function SignUp() {
@@ -16,10 +17,11 @@ function SignUp() {
 
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('')
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [passwordRepeat, setPasswordRepeat] = useState("")
-    const [validationCode, setValidationcode] = useState(undefined)
+    const [validationCode, setValidationcode] = useState('')
 
 
 
@@ -47,10 +49,10 @@ function SignUp() {
             return
         }
         
-        const url = 'https://motion.propulsion-home.ch/backend/api%20/auth/registration/validation/'
+        const url = 'https://motion.propulsion-home.ch/backend/api/auth/registration/validation/'
         const jsObject = {
             email: email,
-            username: email,
+            username: username,
             code: validationCode,
             password: password,
             password_repeat: passwordRepeat,
@@ -58,8 +60,10 @@ function SignUp() {
             last_name: lastname
         }
 
+        console.log(jsObject)
+
         const config = {
-            method: "POST",
+            method: "PATCH",
             headers: new Headers({
                 "Content-Type": "application/json"
             }),
@@ -69,6 +73,7 @@ function SignUp() {
         await fetch(url, config).then(response => {
             return response.json()
         }).then(data => {
+            console.log(data)
             dispatch(setToken(data.access))
         }).then(data => {
             navigate('/shop')
@@ -82,6 +87,10 @@ function SignUp() {
 
     const handleLastnameChange = (event) => {
         setLastname(event.target.value);
+    }
+
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
     }
 
     const handleEmailChange = (event) => {
@@ -100,19 +109,16 @@ function SignUp() {
         setValidationcode(event.target.value);
     }
 
-    //to be implemented with users
-    const handleSignUp = () => {
-        console.log('trying to sign up')
-    }
-
-
     return (
-        <div className="sign-up-container">
             <Fragment>
                 <Header />
-                <div className='log-in-container'>
-                    <h1>Welcome to the Store</h1>
-                    <h3>Sign Up!</h3>
+                <div className='validation-container'>
+                    <h1>Last step:</h1>
+                    <h1>Validate your email!</h1>
+                    <p>An Email with a validation code was sent to  your E-mail, if it was valid.
+                        <br></br>
+                        Use it along the other information below to validate to our store!
+                    </p>
                     <form onSubmit={(event) => { handleSubmit(event) }}>
                         <label htmlFor='firstname'>
                             Firstname
@@ -122,9 +128,14 @@ function SignUp() {
                             Lastname
                             <input id='lastname' className='lastname' type='text' placeholder='lastname...' onChange={handleLastnameChange} />
                         </label>
+                        <label htmlFor='username'>
+                            Username
+                            <input id='username' className='username' type='text' placeholder='usernam...' onChange={handleUsernameChange} />
+                        </label>
+
                         <label htmlFor='email'>
                             Email
-                            <input id='email' className='email' type='text' placeholder='email...' onChange={handleEmailChange} />
+                            <input id='email' className='email' type='email' placeholder='email...' onChange={handleEmailChange} />
                         </label>
                         <label htmlFor='validationCode'>
                             Validation Code
@@ -140,18 +151,13 @@ function SignUp() {
                         <input id='password_repeat' className='password_repeat' type='password' placeholder='repeat password...' onChange={handlePWRepeatChange} />
                         </label>
                         {/* <div className='buttons'> */}
-                        <button type='submit'>Log in</button>
+                        <button type='submit'>Validate!</button>
                         {/* <button type='submit'>Sign up</button> */}
                         {/* </div> */}
                     </form>
-                    <div className='sign-up-container'>
-                        <p>Not signed up yet?</p>
-                        <span className='signup' onClick={handleSignUp}>Sign Up!</span>
-                    </div>
                 </div>
                 <Footer />
             </Fragment>
-        </div>
     );
 }
 

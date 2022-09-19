@@ -39,6 +39,7 @@ function App() {
     await fetch(url, config).then(response => {
       return response.json()
     }).then(data => {
+      console.log(data.access)
       dispatch(setToken(data.access))
     }).then(data => {
       navigate('/shop')
@@ -85,10 +86,10 @@ function App() {
           <form onSubmit={(event) => { handleSubmit(event) }}>
             <label htmlFor='email'></label>
             E-mail
-            <input id='email' className='email' type='text' placeholder='email...' onChange={handleEmailChange} />
+            <input id='email' className='email' type='email' placeholder='email...' onChange={handleEmailChange} />
             <label htmlFor='pw'> </label>
             Password
-            <input id='email' className='email' type='password' placeholder='password...' onChange={handlePWChange} />
+            <input id='password' className='password' type='password' placeholder='password...' onChange={handlePWChange} />
             {/* <div className='buttons'> */}
             <button type='submit'>Log in</button>
             {/* <button type='submit'>Sign up</button> */}

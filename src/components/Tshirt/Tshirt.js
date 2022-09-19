@@ -1,7 +1,6 @@
 import './style.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, removeItem } from '../../redux/slices/Cart';
-import { useState } from 'react';
 
 function Tshirt(props) {
 
@@ -24,6 +23,7 @@ function Tshirt(props) {
                     if (element.productId === thisItem.productId) {
                         return element.amountInCart
                     }
+                        return 0
                 })
             }
         }

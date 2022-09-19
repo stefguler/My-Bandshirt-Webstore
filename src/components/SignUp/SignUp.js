@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
+import './style.css';
 
 
 function SignUp() {
@@ -24,7 +25,12 @@ function SignUp() {
         /*step: 1 -> register, url: https://motion.propulsion-home.ch/backend/api%20/auth/registration/
         Payload:*/
 
-        const url = 'https://motion.propulsion-home.ch/backend/api%20/auth/registration/'
+        if (email === '') {
+            alert('please enter an email adress to continue!')
+            return
+        }
+
+        const url = 'https://motion.propulsion-home.ch/backend/api/auth/registration/'
         const jsObject = {
             email: email,
         }
@@ -40,6 +46,7 @@ function SignUp() {
         fetch(url, config).then(response => {
             return response.json()
         }).then(data => {
+            console.log(data)
             navigate('/validation')
         })
     }
@@ -49,33 +56,25 @@ function SignUp() {
     }
 
 
-    //to be implemented with users
-    const handleSignUp = () => {
-        console.log('trying to sign up')
-    }
-
-
     return (
-        <div className="sign-up-container">
             <Fragment>
                 <Header />
-                <div className='log-in-container'>
+                <div className='register-container'>
                     <h1>Welcome to the Store</h1>
-                    <h3>Sign Up!</h3>
+                    <h3>Please register with a valid E-mail!</h3>
                     <form onSubmit={(event) => { handleSubmit(event) }}>
                         <label htmlFor='email'>
                             Email
-                            <input id='email' className='email' type='text' placeholder='email...' onChange={handleEmailChange} />
+                            <input id='email' className='email' type='email' placeholder='email...' onChange={handleEmailChange} />
                         </label>
                         {/* <div className='buttons'> */}
-                        <button type='submit'>Sign Up!</button>
+                        <button type='submit'>Sign up!</button>
                         {/* <button type='submit'>Sign up</button> */}
                         {/* </div> */}
                     </form>
                 </div>
                 <Footer />
             </Fragment>
-        </div>
     );
 }
 
