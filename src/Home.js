@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react'
 import { setToken } from './redux/slices/Auth'
 
@@ -13,12 +13,12 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const authState = useSelector(state => state.token.token)
+  // const authState = useSelector(state => state.token.token)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
 
     event.preventDefault();
 
@@ -36,12 +36,12 @@ function App() {
       body: JSON.stringify(jsObject)
     }
 
-    fetch(url, config).then(response => {
+    await fetch(url, config).then(response => {
       return response.json()
     }).then(data => {
       dispatch(setToken(data.access))
     }).then(data => {
-      handleNavigate()
+      navigate('/shop')
     })
 
     // .then(data => {
@@ -53,13 +53,13 @@ function App() {
   //temporary login credentials:
   //email : xevibaj171@dnitem.com, pw: abcdefg
 
-  const handleNavigate = () => {
-      if (authState === undefined) {
-        alert("Failed to log in, please try")
-        return
-      }
-      navigate('/shop')
-    }
+  // const handleNavigate = () => {
+  //     // if (authState === undefined) {
+  //     //   alert("Failed to log in, please try")
+  //     //   return
+  //     // }
+  //     navigate('/shop')
+  //   }
 
 
   const handleEmailChange = (event) => {
@@ -72,7 +72,8 @@ function App() {
 
   //to be implemented with users
   const handleSignUp = () => {
-    console.log('trying to sign up')
+    navigate('signup')
+
   }
 
   return (
